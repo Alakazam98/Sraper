@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sraper"
         mc:Ignorable="d"
-        Title="Game" Height="450" Width="800">
+        Title="Game" Height="507.722" Width="874.43">
     <Grid>
         
     </Grid>
