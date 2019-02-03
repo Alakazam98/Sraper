@@ -10,31 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Sraper
 {
-    
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Interaction logic for Game.xaml
+    /// </summary>
+    public partial class Game : Window
     {
-        public MainWindow()
+        public Game()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            // Tworzy nowe okno Game
-            Game Game = new Game();
-
-            // Pokazuje okno gry
-            Game.Show();
-
-            //Zamyka okno menu
-            this.Close();
-
-
         }
     }
 }
