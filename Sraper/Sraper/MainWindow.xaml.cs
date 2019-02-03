@@ -25,9 +25,26 @@ namespace Sraper
             InitializeComponent();
         }
 
+        private void BtnNewGame_Click(object sender, RoutedEventArgs e)
+        {
+            //tworzy obiekt game
+            Game Game = new Game();
+
+            //otwiera okno gry
+            Game.Show();
+
+            //zamyka MainWindow
+            this.Close();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void BtnHighScore_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
