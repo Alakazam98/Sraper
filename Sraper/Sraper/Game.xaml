@@ -7,9 +7,39 @@
         mc:Ignorable="d"
         Title="Game" Height="507.722" Width="874.43">
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="308" Margin="410,140,0,0" VerticalAlignment="Top" Width="410"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="410" Margin="410,38,0,0" VerticalAlignment="Top" Width="410"/>
         <Button x:Name="btnTryAgaind" Content="TRY AGAIN" HorizontalAlignment="Left" Margin="99,182,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold"/>
         <Button x:Name="btnBackToMenu" Content="MAIN MENU" HorizontalAlignment="Left" Margin="99,292,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold" Click="BtnBackToMenu_Click"/>
+        <Grid x:Name="ButtonsGrid" Margin="410,38,48,0" Height="410" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="41"/>
+                <RowDefinition Height="41"/>
+                <RowDefinition Height="41"/>
+                <RowDefinition Height="41"/>
+                <RowDefinition Height="41"/>
+                <RowDefinition Height="41"/>
+                <RowDefinition Height="41"/>
+                <RowDefinition Height="41"/>
+                <RowDefinition Height="41"/>
+                <RowDefinition Height="41"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="41"/>
 
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="Button00" Content="" VerticalAlignment="Top" Height="41" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Width="41" Click="Button00_Click"/>
+
+
+        </Grid>
     </Grid>
 </Window>

@@ -35,5 +35,10 @@ namespace Sraper
             //Zamyka okno gry
             this.Close();
         }
+
+        private void Button00_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
