@@ -10,7 +10,7 @@
         <Color x:Key="SROLOR">#FFB97610</Color>
     </Window.Resources>
     <Grid>
-        <TextBox x:Name="sraper" HorizontalAlignment="Left" Height="120" Margin="458,104,0,0" TextWrapping="Wrap" Text="SRAPER" VerticalAlignment="Top" Width="283" FontSize="72" FontWeight="Bold"/>
+        <TextBox x:Name="sraper" HorizontalAlignment="Left" Height="120" Margin="579,81,0,0" TextWrapping="Wrap" Text="SRAPER" VerticalAlignment="Top" Width="283" FontSize="72" FontWeight="Bold"/>
         <Button Content="NEW GAME" HorizontalAlignment="Left" Margin="579,286,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" FontWeight="Bold" Foreground="White">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
