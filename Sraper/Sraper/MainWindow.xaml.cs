@@ -15,7 +15,9 @@ using System.Windows.Shapes;
 
 namespace Sraper
 {
-    
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -25,16 +27,7 @@ namespace Sraper
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Tworzy nowe okno Game
-            Game Game = new Game();
-
-            // Pokazuje okno gry
-            Game.Show();
-
-            //Zamyka okno menu
             this.Close();
-
-
         }
     }
 }
