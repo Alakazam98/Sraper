@@ -10,8 +10,8 @@
         <Color x:Key="SROLOR">#FFB97610</Color>
     </Window.Resources>
     <Grid>
-        <TextBox x:Name="sraper" HorizontalAlignment="Left" Height="96" Margin="551,104,0,0" TextWrapping="Wrap" Text="SRAPER" VerticalAlignment="Top" Width="335" FontSize="72" FontWeight="Bold"/>
-        <Button Content="NEW GAME" HorizontalAlignment="Left" Margin="579,286,0,0" VerticalAlignment="Top" Width="265" Height="80" FontSize="48" FontWeight="Bold" Foreground="White">
+        <TextBox x:Name="sraper" HorizontalAlignment="Left" Height="120" Margin="458,104,0,0" TextWrapping="Wrap" Text="SRAPER" VerticalAlignment="Top" Width="283" FontSize="72" FontWeight="Bold"/>
+        <Button Content="NEW GAME" HorizontalAlignment="Left" Margin="579,286,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" FontWeight="Bold" Foreground="White">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
@@ -19,7 +19,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Content="HIGH SCORE" HorizontalAlignment="Left" Margin="579,412,0,0" VerticalAlignment="Top" Width="265" Height="80" FontSize="48" ClickMode="Hover" Foreground="#FFFDFCFC" FontWeight="Bold">
+        <Button Content="HIGH SCORE" HorizontalAlignment="Left" Margin="579,412,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" ClickMode="Hover" Foreground="#FFFDFCFC" FontWeight="Bold">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF402906" Offset="0"/>
@@ -27,7 +27,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Content="EXIT" HorizontalAlignment="Left" Margin="579,544,0,0" VerticalAlignment="Top" Width="265" Height="80" FontSize="48" Foreground="#FFFDFCFC" FontWeight="Bold">
+        <Button Content="EXIT" HorizontalAlignment="Left" Margin="579,544,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" Foreground="#FFFDFCFC" FontWeight="Bold" Click="Button_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
