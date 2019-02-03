@@ -23,5 +23,17 @@ namespace Sraper
         {
             InitializeComponent();
         }
+
+        private void BtnBackToMenu_Click(object sender, RoutedEventArgs e)
+        {
+            //Tworzy nowy obiekt MainWindow
+            MainWindow MainWindow = new MainWindow();
+
+            //Pokazuje okno MainWindow
+            MainWindow.Show();
+
+            //Zamyka okno gry
+            this.Close();
+        }
     }
 }

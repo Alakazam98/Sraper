@@ -9,7 +9,7 @@
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="308" Margin="410,140,0,0" VerticalAlignment="Top" Width="410"/>
         <Button x:Name="btnTryAgaind" Content="TRY AGAIN" HorizontalAlignment="Left" Margin="99,182,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="btnBackToMenu" Content="MAIN MENU" HorizontalAlignment="Left" Margin="99,292,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="btnBackToMenu" Content="MAIN MENU" HorizontalAlignment="Left" Margin="99,292,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold" Click="BtnBackToMenu_Click"/>
 
     </Grid>
 </Window>

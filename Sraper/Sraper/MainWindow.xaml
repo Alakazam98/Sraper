@@ -35,8 +35,8 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+        <Image x:Name="MainWindowBackground1" HorizontalAlignment="Left" Height="788" Margin="972,0,-0.4,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg" Cursor="None"/>
         <Image x:Name="MainWindowBackground" HorizontalAlignment="Left" Height="788" Margin="10,0,0,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg"/>
-        <Image x:Name="MainWindowBackground1" HorizontalAlignment="Left" Height="788" Margin="972,0,-0.4,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg"/>
 
     </Grid>
 </Window>
