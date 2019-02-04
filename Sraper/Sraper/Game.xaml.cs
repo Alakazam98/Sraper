@@ -43,6 +43,7 @@ namespace Sraper
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            WindowState = WindowState.Maximized;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timerTicker;

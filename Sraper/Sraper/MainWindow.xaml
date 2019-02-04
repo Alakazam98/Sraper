@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sraper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="825.522" Width="1456.227">
+        Title="MainWindow" Height="825.522" Width="1456.227" Loaded="Window_Loaded">
     <Window.Resources>
         <Color x:Key="SROLOR">#FFB97610</Color>
     </Window.Resources>
     <Grid>
-        <TextBox x:Name="sraper" HorizontalAlignment="Left" Height="120" Margin="603,81,0,0" TextWrapping="Wrap" Text="SRAPER" VerticalAlignment="Top" Width="283" FontSize="72" FontWeight="Bold"/>
-        <Button x:Name="btnNewGame" Content="NEW GAME" HorizontalAlignment="Left" Margin="579,286,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" FontWeight="Bold" Foreground="White" Click="BtnNewGame_Click">
+        <Image x:Name="MainWindowBackground1" HorizontalAlignment="Right" Height="788" Margin="972,0,-0.4,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg" Cursor="Arrow"/>
+        <Button x:Name="btnNewGame" Content="NEW GAME" HorizontalAlignment="Center" Margin="0,286,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" FontWeight="Bold" Foreground="White" Click="BtnNewGame_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
@@ -19,7 +19,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="btnHighScore" Content="HIGH SCORE" HorizontalAlignment="Left" Margin="579,412,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" ClickMode="Hover" Foreground="#FFFDFCFC" FontWeight="Bold" Click="BtnHighScore_Click">
+        <Button x:Name="btnHighScore" Content="HIGH SCORE" HorizontalAlignment="Center" Margin="0,412,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" ClickMode="Hover" Foreground="#FFFDFCFC" FontWeight="Bold" Click="BtnHighScore_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF402906" Offset="0"/>
@@ -27,7 +27,8 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="btnExit" Content="EXIT" HorizontalAlignment="Left" Margin="579,544,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" Foreground="#FFFDFCFC" FontWeight="Bold" Click="Button_Click">
+        <Image x:Name="MainWindowBackground" HorizontalAlignment="Left" Height="788" Margin="10,0,0,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg"/>
+        <Button x:Name="btnExit" Content="EXIT" HorizontalAlignment="Center" Margin="0,544,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" Foreground="#FFFDFCFC" FontWeight="Bold" Click="Button_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
@@ -35,8 +36,11 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Image x:Name="MainWindowBackground1" HorizontalAlignment="Left" Height="788" Margin="972,0,-0.4,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg" Cursor="None"/>
-        <Image x:Name="MainWindowBackground" HorizontalAlignment="Left" Height="788" Margin="10,0,0,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg"/>
+        <Label x:Name="Sraper" Content="SRAPER" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" FontSize="100" FontWeight="Bold">
+            <Label.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.MenuTextColorKey}}"/>
+            </Label.Foreground>
+        </Label>
 
     </Grid>
 </Window>

@@ -46,5 +46,11 @@ namespace Sraper
         {
 
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
+
+        }
     }
 }
