@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sraper"
         mc:Ignorable="d"
-        Title="Game" Height="507.722" Width="874.43">
+        Title="Game" Height="507.722" Width="874.43" Loaded="Window_Loaded">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="410" Margin="410,38,0,0" VerticalAlignment="Top" Width="410"/>
         <Button x:Name="btnTryAgaind" Content="TRY AGAIN" HorizontalAlignment="Left" Margin="99,182,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold"/>
@@ -41,5 +41,8 @@
 
 
         </Grid>
+        <Label x:Name="Timer" HorizontalAlignment="Left" Margin="99,38,0,0" VerticalAlignment="Top" Height="96" Width="184" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <Label x:Name="TimerLabelContent" Content="0" Height="96" Width="184" FontSize="60" />
+        </Label>
     </Grid>
 </Window>

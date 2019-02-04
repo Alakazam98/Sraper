@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Windows.Threading;
 namespace Sraper
 {
     /// <summary>
@@ -39,6 +39,23 @@ namespace Sraper
         private void Button00_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timerTicker;
+            timer.Start();
+        }
+
+        private int increment = 0;
+
+        private void timerTicker(object sender, EventArgs e)
+        {
+            increment++;
+
+            TimerLabelContent.Content = increment.ToString();
         }
     }
 }
