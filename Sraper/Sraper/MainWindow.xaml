@@ -10,7 +10,7 @@
         <Color x:Key="SROLOR">#FFB97610</Color>
     </Window.Resources>
     <Grid>
-        <Image x:Name="MainWindowBackground1" HorizontalAlignment="Right" Height="788" Margin="972,0,-0.4,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg" Cursor="Arrow"/>
+        <Image x:Name="MainWindowBackground1" HorizontalAlignment="Right" Height="788" Margin="972,0,-0.4,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg" Cursor="Arrow" Stretch="None"/>
         <Button x:Name="btnNewGame" Content="NEW GAME" HorizontalAlignment="Center" Margin="0,286,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" FontWeight="Bold" Foreground="White" Click="BtnNewGame_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
