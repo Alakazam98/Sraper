@@ -58,5 +58,17 @@ namespace Sraper
 
             TimerLabelContent.Content = increment.ToString();
         }
+
+        private void BtnTryAgaind_Click(object sender, RoutedEventArgs e)
+        {
+            //Tworzy nowy obiekt MainWindow
+            Game Game = new Game();
+
+            //Pokazuje okno MainWindow
+            Game.Show();
+
+            //Zamyka okno gry
+            this.Close();
+        }
     }
 }
