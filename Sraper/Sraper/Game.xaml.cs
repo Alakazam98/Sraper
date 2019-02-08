@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,28 @@ namespace Sraper
         public Game()
         {
             InitializeComponent();
+
+            for (int i = 0; i < 100; ++i)
+            {
+                Button button = new Button()
+                {
+                    Tag = i
+                };
+                button.Click += new RoutedEventHandler(button_Click);
+                this.grid.Children.Add(button);
+            }
         }
+
+        void button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Tutaj se ogarniemy temat :)");
+        }
+
+       
+
+        
+   
+
 
         private void BtnBackToMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -36,10 +58,7 @@ namespace Sraper
             this.Close();
         }
 
-        private void Button00_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

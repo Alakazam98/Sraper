@@ -8,144 +8,14 @@
         Title="Game" Height="507.722" Width="874.43" Loaded="Window_Loaded">
     
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="410" Margin="410,38,0,0" VerticalAlignment="Top" Width="410"/>
+        <Border  HorizontalAlignment="Left" Height="410" Margin="410,38,0,0" VerticalAlignment="Top" Width="410"/>
         <Button x:Name="btnTryAgaind" Content="TRY AGAIN" HorizontalAlignment="Left" Margin="99,182,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold" Click="BtnTryAgaind_Click"/>
         <Button x:Name="btnBackToMenu" Content="MAIN MENU" HorizontalAlignment="Left" Margin="99,292,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold" Click="BtnBackToMenu_Click"/>
-        <Grid x:Name="ButtonsGrid" Margin="410,38,48,0" Height="410" VerticalAlignment="Top">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <Grid x:Name="ButtonsGrid" Margin="410,38,48,0" Height="410" Width="410" VerticalAlignment="Center">
+   
+            <UniformGrid x:Name="grid" >
 
-            <Button x:Name="btn_0_0" Grid.Column="0" Grid.Row="0"/>
-            <Button x:Name="btn_0_1" Grid.Column="1" Grid.Row="0"/>
-            <Button x:Name="btn_0_2" Grid.Column="2" Grid.Row="0"/>
-            <Button x:Name="btn_0_3" Grid.Column="3" Grid.Row="0"/>
-            <Button x:Name="btn_0_4" Grid.Column="4" Grid.Row="0"/>
-            <Button x:Name="btn_0_5" Grid.Column="5" Grid.Row="0"/>
-            <Button x:Name="btn_0_6" Grid.Column="6" Grid.Row="0"/>
-            <Button x:Name="btn_0_7" Grid.Column="7" Grid.Row="0"/>
-            <Button x:Name="btn_0_8" Grid.Column="8" Grid.Row="0"/>
-            <Button x:Name="btn_0_9" Grid.Column="9" Grid.Row="0"/>
-
-            <Button x:Name="btn_1_0" Grid.Column="0" Grid.Row="1"/>
-            <Button x:Name="btn_1_1" Grid.Column="1" Grid.Row="1"/>
-            <Button x:Name="btn_1_2" Grid.Column="2" Grid.Row="1"/>
-            <Button x:Name="btn_1_3" Grid.Column="3" Grid.Row="1"/>
-            <Button x:Name="btn_1_4" Grid.Column="4" Grid.Row="1"/>
-            <Button x:Name="btn_1_5" Grid.Column="5" Grid.Row="1"/>
-            <Button x:Name="btn_1_6" Grid.Column="6" Grid.Row="1"/>
-            <Button x:Name="btn_1_7" Grid.Column="7" Grid.Row="1"/>
-            <Button x:Name="btn_1_8" Grid.Column="8" Grid.Row="1"/>
-            <Button x:Name="btn_1_9" Grid.Column="9" Grid.Row="1"/>
-
-            <Button x:Name="btn_2_0" Grid.Column="0" Grid.Row="2"/>
-            <Button x:Name="btn_2_1" Grid.Column="1" Grid.Row="2"/>
-            <Button x:Name="btn_2_2" Grid.Column="2" Grid.Row="2"/>
-            <Button x:Name="btn_2_3" Grid.Column="3" Grid.Row="2"/>
-            <Button x:Name="btn_2_4" Grid.Column="4" Grid.Row="2"/>
-            <Button x:Name="btn_2_5" Grid.Column="5" Grid.Row="2"/>
-            <Button x:Name="btn_2_6" Grid.Column="6" Grid.Row="2"/>
-            <Button x:Name="btn_2_7" Grid.Column="7" Grid.Row="2"/>
-            <Button x:Name="btn_2_8" Grid.Column="8" Grid.Row="2"/>
-            <Button x:Name="btn_2_9" Grid.Column="9" Grid.Row="2"/>
-
-            <Button x:Name="btn_3_0" Grid.Column="0" Grid.Row="3"/>
-            <Button x:Name="btn_3_1" Grid.Column="1" Grid.Row="3"/>
-            <Button x:Name="btn_3_2" Grid.Column="2" Grid.Row="3"/>
-            <Button x:Name="btn_3_3" Grid.Column="3" Grid.Row="3"/>
-            <Button x:Name="btn_3_4" Grid.Column="4" Grid.Row="3"/>
-            <Button x:Name="btn_3_5" Grid.Column="5" Grid.Row="3"/>
-            <Button x:Name="btn_3_6" Grid.Column="6" Grid.Row="3"/>
-            <Button x:Name="btn_3_7" Grid.Column="7" Grid.Row="3"/>
-            <Button x:Name="btn_3_8" Grid.Column="8" Grid.Row="3"/>
-            <Button x:Name="btn_3_9" Grid.Column="9" Grid.Row="3"/>
-
-            <Button x:Name="btn_4_0" Grid.Column="0" Grid.Row="4"/>
-            <Button x:Name="btn_4_1" Grid.Column="1" Grid.Row="4"/>
-            <Button x:Name="btn_4_2" Grid.Column="2" Grid.Row="4"/>
-            <Button x:Name="btn_4_3" Grid.Column="3" Grid.Row="4"/>
-            <Button x:Name="btn_4_4" Grid.Column="4" Grid.Row="4"/>
-            <Button x:Name="btn_4_5" Grid.Column="5" Grid.Row="4"/>
-            <Button x:Name="btn_4_6" Grid.Column="6" Grid.Row="4"/>
-            <Button x:Name="btn_4_7" Grid.Column="7" Grid.Row="4"/>
-            <Button x:Name="btn_4_8" Grid.Column="8" Grid.Row="4"/>
-            <Button x:Name="btn_4_9" Grid.Column="9" Grid.Row="4"/>
-
-            <Button x:Name="btn_5_0" Grid.Column="0" Grid.Row="5"/>
-            <Button x:Name="btn_5_1" Grid.Column="1" Grid.Row="5"/>
-            <Button x:Name="btn_5_2" Grid.Column="2" Grid.Row="5"/>
-            <Button x:Name="btn_5_3" Grid.Column="3" Grid.Row="5"/>
-            <Button x:Name="btn_5_4" Grid.Column="4" Grid.Row="5"/>
-            <Button x:Name="btn_5_5" Grid.Column="5" Grid.Row="5"/>
-            <Button x:Name="btn_5_6" Grid.Column="6" Grid.Row="5"/>
-            <Button x:Name="btn_5_7" Grid.Column="7" Grid.Row="5"/>
-            <Button x:Name="btn_5_8" Grid.Column="8" Grid.Row="5"/>
-            <Button x:Name="btn_5_9" Grid.Column="9" Grid.Row="5"/>
-
-            <Button x:Name="btn_6_0" Grid.Column="0" Grid.Row="6"/>
-            <Button x:Name="btn_6_1" Grid.Column="1" Grid.Row="6"/>
-            <Button x:Name="btn_6_2" Grid.Column="2" Grid.Row="6"/>
-            <Button x:Name="btn_6_3" Grid.Column="3" Grid.Row="6"/>
-            <Button x:Name="btn_6_4" Grid.Column="4" Grid.Row="6"/>
-            <Button x:Name="btn_6_5" Grid.Column="5" Grid.Row="6"/>
-            <Button x:Name="btn_6_6" Grid.Column="6" Grid.Row="6"/>
-            <Button x:Name="btn_6_7" Grid.Column="7" Grid.Row="6"/>
-            <Button x:Name="btn_6_8" Grid.Column="8" Grid.Row="6"/>
-            <Button x:Name="btn_6_9" Grid.Column="9" Grid.Row="6"/>
-
-            <Button x:Name="btn_7_0" Grid.Column="0" Grid.Row="7"/>
-            <Button x:Name="btn_7_1" Grid.Column="1" Grid.Row="7"/>
-            <Button x:Name="btn_7_2" Grid.Column="2" Grid.Row="7"/>
-            <Button x:Name="btn_7_3" Grid.Column="3" Grid.Row="7"/>
-            <Button x:Name="btn_7_4" Grid.Column="4" Grid.Row="7"/>
-            <Button x:Name="btn_7_5" Grid.Column="5" Grid.Row="7"/>
-            <Button x:Name="btn_7_6" Grid.Column="6" Grid.Row="7"/>
-            <Button x:Name="btn_7_7" Grid.Column="7" Grid.Row="7"/>
-            <Button x:Name="btn_7_8" Grid.Column="8" Grid.Row="7"/>
-            <Button x:Name="btn_7_9" Grid.Column="9" Grid.Row="7"/>
-
-            <Button x:Name="btn_8_0" Grid.Column="0" Grid.Row="8"/>
-            <Button x:Name="btn_8_1" Grid.Column="1" Grid.Row="8"/>
-            <Button x:Name="btn_8_2" Grid.Column="2" Grid.Row="8"/>
-            <Button x:Name="btn_8_3" Grid.Column="3" Grid.Row="8"/>
-            <Button x:Name="btn_8_4" Grid.Column="4" Grid.Row="8"/>
-            <Button x:Name="btn_8_5" Grid.Column="5" Grid.Row="8"/>
-            <Button x:Name="btn_8_6" Grid.Column="6" Grid.Row="8"/>
-            <Button x:Name="btn_8_7" Grid.Column="7" Grid.Row="8"/>
-            <Button x:Name="btn_8_8" Grid.Column="8" Grid.Row="8"/>
-            <Button x:Name="btn_8_9" Grid.Column="9" Grid.Row="8"/>
-
-            <Button x:Name="btn_9_0" Grid.Column="0" Grid.Row="9"/>
-            <Button x:Name="btn_9_1" Grid.Column="1" Grid.Row="9"/>
-            <Button x:Name="btn_9_2" Grid.Column="2" Grid.Row="9"/>
-            <Button x:Name="btn_9_3" Grid.Column="3" Grid.Row="9"/>
-            <Button x:Name="btn_9_4" Grid.Column="4" Grid.Row="9"/>
-            <Button x:Name="btn_9_5" Grid.Column="5" Grid.Row="9"/>
-            <Button x:Name="btn_9_6" Grid.Column="6" Grid.Row="9"/>
-            <Button x:Name="btn_9_7" Grid.Column="7" Grid.Row="9"/>
-            <Button x:Name="btn_9_8" Grid.Column="8" Grid.Row="9"/>
-            <Button x:Name="btn_9_9" Grid.Column="9" Grid.Row="9"/>
+            </UniformGrid>
 
         </Grid>
         <Label x:Name="Timer" HorizontalAlignment="Left" Margin="99,38,0,0" VerticalAlignment="Top" Height="96" Width="184" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
