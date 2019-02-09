@@ -13,8 +13,7 @@
         <Button x:Name="btnBackToMenu" Content="MAIN MENU" HorizontalAlignment="Left" Margin="99,292,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold" Click="BtnBackToMenu_Click"/>
         <Grid x:Name="ButtonsGrid" Margin="410,38,48,0" Height="410" Width="410" VerticalAlignment="Center">
 
-            <UniformGrid x:Name="grid" Rows="10" Columns="10">
-                
+            <UniformGrid x:Name="grid" Rows="10" Columns="10" >
             </UniformGrid>
 
         </Grid>

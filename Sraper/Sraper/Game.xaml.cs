@@ -21,13 +21,18 @@ namespace Sraper
     public partial class Game : Window
     {
 
-        
+
+        int[] Board = new int[100];
+        int[] RandomNumber = new int[10];
 
         public Game()
           {
               InitializeComponent();
+           
 
-              for (int i = 0; i < 100; ++i)
+            Random rnd = new Random();
+
+            for (int i = 0; i < 100; ++i)
               {
                   Button button = new Button()
                   {
@@ -35,9 +40,18 @@ namespace Sraper
                   };
                   button.Click += new RoutedEventHandler(button_Click);
                   this.grid.Children.Add(button);
-                
+                Board[i]=this.grid.Children.IndexOf(button);
             }
               
+            for(int i = 0;i<RandomNumber.Length;)
+            {
+                int number = rnd.Next(0, 100);
+                if (!RandomNumber.Contains(number))
+                {
+                    RandomNumber[i] = number;
+                    i++;
+                }
+            }
                 
             
 
@@ -45,33 +59,22 @@ namespace Sraper
         
 
 
-        /*  public Game()
-          {
-              InitializeComponent();
-
-              for (int i = 0; i < 100; ++i)
-              {
-                  System.Windows.Controls.TextBox txt = new System.Windows.Controls.TextBox();
-                  txt.Name = "textBox";
-                  Grid.SetColumn(txt, 1);
-                  Grid.SetRow(txt, 1);
-                  grid.Children.Add(txt);
-              }
-
-          }*/
+       
 
 
-        static void button_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-
-     
-
-                Random randNum = new Random();
-                
-                
+           
             
-            button.Content = randNum.Next(0,2);
+            Button button = sender as Button;
+            if (this.RandomNumber.Contains(this.grid.Children.IndexOf(button)))
+            {
+
+
+
+                button.Content = "*";
+                MessageBox.Show("You stepped in poop!!! So probably it's a lost");
+            }  
             
 
             button.Background = Brushes.White;
