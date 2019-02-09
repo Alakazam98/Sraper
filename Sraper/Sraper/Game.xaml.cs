@@ -69,24 +69,26 @@ namespace Sraper
             Button button = sender as Button;
             if (this.RandomNumber.Contains(this.grid.Children.IndexOf(button)))
             {
+                Image image = new Image();
+                image.Source = new BitmapImage(new Uri("images/Sraper.Tlo.jpg", UriKind.RelativeOrAbsolute));
 
-
-
-                button.Content = "*";
+                button.Background = Brushes.White;
+                button.Content = image;
                 MessageBox.Show("You stepped in poop!!! So probably it's a lost");
-            }  
-            
+                grid.IsEnabled = false;
+            }
+
 
             button.Background = Brushes.White;
 
-            
-            
+
+
         }
 
-       
-       
-        
-   
+
+
+
+
 
 
         private void BtnBackToMenu_Click(object sender, RoutedEventArgs e)
