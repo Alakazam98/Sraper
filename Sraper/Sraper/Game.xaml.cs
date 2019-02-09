@@ -20,29 +20,68 @@ namespace Sraper
     /// </summary>
     public partial class Game : Window
     {
+
+        
+
         public Game()
-        {
-            InitializeComponent();
+          {
+              InitializeComponent();
 
-            for (int i = 0; i < 100; ++i)
-            {
-                Button button = new Button()
-                {
-                    Tag = i
-                };
-                button.Click += new RoutedEventHandler(button_Click);
-                this.grid.Children.Add(button);
+              for (int i = 0; i < 100; ++i)
+              {
+                  Button button = new Button()
+                  {
+                      Tag = i
+                  };
+                  button.Click += new RoutedEventHandler(button_Click);
+                  this.grid.Children.Add(button);
+                
             }
-        }
+              
+                
+            
 
-        void button_Click(object sender, RoutedEventArgs e)
+          }
+        
+
+
+        /*  public Game()
+          {
+              InitializeComponent();
+
+              for (int i = 0; i < 100; ++i)
+              {
+                  System.Windows.Controls.TextBox txt = new System.Windows.Controls.TextBox();
+                  txt.Name = "textBox";
+                  Grid.SetColumn(txt, 1);
+                  Grid.SetRow(txt, 1);
+                  grid.Children.Add(txt);
+              }
+
+          }*/
+
+
+        static void button_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            button.Visibility = Visibility.Hidden;
+
+     
+
+                Random randNum = new Random();
+                
+                
+            
+            button.Content = randNum.Next(0,2);
+            
+
+            button.Background = Brushes.White;
+
+            
+            
         }
 
        
-
+       
         
    
 
