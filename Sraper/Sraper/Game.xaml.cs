@@ -50,6 +50,9 @@ namespace Sraper
                 {
                     RandomNumber[i] = number;
                     i++;
+                    
+
+
                 }
             }
                 
@@ -77,14 +80,57 @@ namespace Sraper
                 MessageBox.Show("You stepped in poop!!! So probably it's a lost");
                 grid.IsEnabled = false;
             }
-
+            else
+            {
+                CheckSurrounding(button);
+                
+            }
 
             button.Background = Brushes.White;
 
 
-
         }
 
+        public void CheckSurrounding(Button button)
+        {
+            int howManyMines = 0;
+        
+
+            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button)-11))))
+            {
+                howManyMines++;
+            }
+            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) - 10))))
+            {
+                howManyMines++;
+            }
+            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) - 9))))
+            {
+                howManyMines++;
+            }
+            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) + 1))))
+            {
+                howManyMines++;
+            }
+            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) + 11))))
+            {
+                howManyMines++;
+            }
+            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) + 10))))
+            {
+                howManyMines++;
+            }
+            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) + 9))))
+            {
+                howManyMines++;
+            }
+            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) - 1))))
+            {
+                howManyMines++;
+            }
+            button.Content = howManyMines;
+            
+        }
 
 
 
