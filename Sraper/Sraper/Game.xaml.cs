@@ -37,7 +37,8 @@ namespace Sraper
 
         void button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Tutaj se ogarniemy temat :)");
+            Button button = sender as Button;
+            button.Visibility = Visibility.Hidden;
         }
 
        
