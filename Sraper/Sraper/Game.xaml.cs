@@ -26,7 +26,8 @@ namespace Sraper
         int[] RandomNumber = new int[10];
         int[] LeftColumn = new int[10] { 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 };
         int[] RightColumn = new int[10] { 9, 19, 29, 39, 49, 59, 69, 79, 89, 99 };
-
+        int mineFound = 0;
+        int number = 0;
         public Game()
           {
               InitializeComponent();
@@ -41,6 +42,7 @@ namespace Sraper
                       Tag = i
                   };
                   button.Click += new RoutedEventHandler(button_Click);
+                  button.MouseRightButtonDown += new MouseButtonEventHandler(button_Right_Click);
                   this.grid.Children.Add(button);
                 Board[i]=this.grid.Children.IndexOf(button);
             }
@@ -62,14 +64,22 @@ namespace Sraper
 
           }
         
+        public void Win()
+        {
+            
+            
+                MessageBox.Show("You' ve WON!" +
+                    "Your Time: "+ increment.ToString());
 
+            
+        }
 
        
 
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-           
+
             
             Button button = sender as Button;
             if (this.RandomNumber.Contains(this.grid.Children.IndexOf(button)))
@@ -90,6 +100,40 @@ namespace Sraper
 
             button.Background = Brushes.White;
 
+
+        }
+       
+        private void button_Right_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Button button = sender as Button;
+            
+             if (button.Background == Brushes.Black)
+            {
+                button.Background = Brushes.LightGray;
+                button.Click += button_Click;
+                button.Content = null;
+
+            }
+            else 
+            {
+                button.Background = Brushes.Black;
+
+                button.Click -= button_Click;
+                
+                
+            }
+            if (RandomNumber.Contains(grid.Children.IndexOf(button)) && button.Background == Brushes.Black)
+            {
+                mineFound++;
+            }
+            else if (RandomNumber.Contains(grid.Children.IndexOf(button)) && button.Background == Brushes.LightGray)
+                mineFound--;
+
+            if (mineFound == 10)
+            {
+                Win();
+            }
 
         }
 
@@ -144,7 +188,7 @@ namespace Sraper
         {
             int freeCells = 0;
             int index = grid.Children.IndexOf(button);
-            if (!RandomNumber.Contains(index - 11) && Board.Contains(index -11 ) && !LeftColumn.Contains(index))
+            if (!RandomNumber.Contains(index - 11) && Board.Contains(index -11 ) && !LeftColumn.Contains(index) && button.Background != Brushes.Black)
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -156,7 +200,7 @@ namespace Sraper
 
 
             }
-            if (!RandomNumber.Contains(index - 10) && Board.Contains(index - 10) )
+            if (!RandomNumber.Contains(index - 10) && Board.Contains(index - 10) && button.Background != Brushes.Black)
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -168,7 +212,7 @@ namespace Sraper
 
 
             }
-            if (!RandomNumber.Contains(index - 9)&&Board.Contains(index - 9) && !RightColumn.Contains(index))
+            if (!RandomNumber.Contains(index - 9)&&Board.Contains(index - 9) && !RightColumn.Contains(index) && button.Background != Brushes.Black)
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -180,7 +224,7 @@ namespace Sraper
 
 
             }
-            if (!RandomNumber.Contains(index + 1)&& Board.Contains(index + 1) &&  !RightColumn.Contains(index))
+            if (!RandomNumber.Contains(index + 1)&& Board.Contains(index + 1) &&  !RightColumn.Contains(index) && button.Background != Brushes.Black)
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -191,7 +235,7 @@ namespace Sraper
 
 
             }
-            if (!RandomNumber.Contains(index + 11)&&Board.Contains(index + 11) && !RightColumn.Contains(index))
+            if (!RandomNumber.Contains(index + 11)&&Board.Contains(index + 11) && !RightColumn.Contains(index) && button.Background != Brushes.Black)
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -202,7 +246,7 @@ namespace Sraper
 
 
             }
-            if (!RandomNumber.Contains(index + 10)&& Board.Contains(index + 10))
+            if (!RandomNumber.Contains(index + 10)&& Board.Contains(index + 10) && button.Background != Brushes.Black)
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -213,7 +257,7 @@ namespace Sraper
 
 
             }
-            if (!RandomNumber.Contains( index + 9) && Board.Contains(index + 9) && !LeftColumn.Contains(index ))
+            if (!RandomNumber.Contains( index + 9) && Board.Contains(index + 9) && !LeftColumn.Contains(index ) && !(button.Background == Brushes.Black))
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -224,7 +268,7 @@ namespace Sraper
 
 
             }
-            if (!RandomNumber.Contains(index - 1)&&Board.Contains(index - 1) && !LeftColumn.Contains(index))
+            if (!RandomNumber.Contains(index - 1)&&Board.Contains(index - 1) && !LeftColumn.Contains(index) && button.IsEnabled)
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -270,9 +314,10 @@ namespace Sraper
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timerTicker;
             timer.Start();
+            
         }
 
-        private int increment = 0;
+         private int increment = 0;
 
         private void timerTicker(object sender, EventArgs e)
         {
