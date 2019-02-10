@@ -24,6 +24,8 @@ namespace Sraper
 
         int[] Board = new int[100];
         int[] RandomNumber = new int[10];
+        int[] LeftColumn = new int[10] { 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+        int[] RightColumn = new int[10] { 9, 19, 29, 39, 49, 59, 69, 79, 89, 99 };
 
         public Game()
           {
@@ -77,13 +79,13 @@ namespace Sraper
 
                 button.Background = Brushes.White;
                 button.Content = image;
-                MessageBox.Show("You stepped in poop!!! So probably it's a lost");
+                MessageBox.Show("You stepped in a poop!");
                 grid.IsEnabled = false;
             }
             else
             {
                 CheckSurrounding(button);
-                
+                CheckForFreeCells(button);
             }
 
             button.Background = Brushes.White;
@@ -94,9 +96,9 @@ namespace Sraper
         public void CheckSurrounding(Button button)
         {
             int howManyMines = 0;
-        
+            int index = grid.Children.IndexOf(button);
 
-            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button)-11))))
+            if (RandomNumber.Contains(this.grid.Children.IndexOf(button)-11) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
@@ -104,15 +106,15 @@ namespace Sraper
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) - 9))))
+            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) - 9) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) + 1))))
+            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) + 1) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) + 11))))
+            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) + 11) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
@@ -120,17 +122,127 @@ namespace Sraper
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) + 9))))
+            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) + 9) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) - 1))))
+            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) - 1) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
+            if(howManyMines==0)
+            {
+                button.Content = null;
+            }
+            else
             button.Content = howManyMines;
             
         }
+        
+
+        public void CheckForFreeCells(Button button)
+        {
+            int freeCells = 0;
+            int index = grid.Children.IndexOf(button);
+            if (!RandomNumber.Contains(index - 11) && Board.Contains(index -11 ) && !LeftColumn.Contains(index))
+            {
+                Button button1 = new Button();
+                button1.Background = Brushes.White;
+                button.Background = Brushes.White;
+
+                grid.Children.RemoveAt(index - 11);
+                    grid.Children.Insert(index - 11, button1);
+                CheckSurrounding(button1);
+
+
+            }
+            if (!RandomNumber.Contains(index - 10) && Board.Contains(index - 10) )
+            {
+                Button button1 = new Button();
+                button1.Background = Brushes.White;
+
+                grid.Children.RemoveAt(index - 10);
+
+                grid.Children.Insert(index - 10, button1);
+                CheckSurrounding(button1);
+
+
+            }
+            if (!RandomNumber.Contains(index - 9)&&Board.Contains(index - 9) && !RightColumn.Contains(index))
+            {
+                Button button1 = new Button();
+                button1.Background = Brushes.White;
+
+                grid.Children.RemoveAt(index - 9);
+
+                grid.Children.Insert(index - 9, button1);
+                CheckSurrounding(button1);
+
+
+            }
+            if (!RandomNumber.Contains(index + 1)&& Board.Contains(index + 1) &&  !RightColumn.Contains(index))
+            {
+                Button button1 = new Button();
+                button1.Background = Brushes.White;
+                grid.Children.RemoveAt(index + 1);
+
+                grid.Children.Insert(index + 1, button1);
+                CheckSurrounding(button1);
+
+
+            }
+            if (!RandomNumber.Contains(index + 11)&&Board.Contains(index + 11) && !RightColumn.Contains(index))
+            {
+                Button button1 = new Button();
+                button1.Background = Brushes.White;
+                grid.Children.RemoveAt(index + 11);
+
+                grid.Children.Insert(index + 11, button1);
+                CheckSurrounding(button1);
+
+
+            }
+            if (!RandomNumber.Contains(index + 10)&& Board.Contains(index + 10))
+            {
+                Button button1 = new Button();
+                button1.Background = Brushes.White;
+                grid.Children.RemoveAt(index + 10);
+
+                grid.Children.Insert(index + 10, button1);
+                CheckSurrounding(button1);
+
+
+            }
+            if (!RandomNumber.Contains( index + 9) && Board.Contains(index + 9) && !LeftColumn.Contains(index ))
+            {
+                Button button1 = new Button();
+                button1.Background = Brushes.White;
+                grid.Children.RemoveAt(index  +9);
+
+                grid.Children.Insert(index +9, button1);
+                CheckSurrounding(button1);
+
+
+            }
+            if (!RandomNumber.Contains(index - 1)&&Board.Contains(index - 1) && !LeftColumn.Contains(index))
+            {
+                Button button1 = new Button();
+                button1.Background = Brushes.White;
+                grid.Children.RemoveAt(index - 1);
+
+                grid.Children.Insert(index - 1, button1);
+                CheckSurrounding(button1);
+
+
+            }
+            if (freeCells == 0)
+            {
+                
+            }
+
+        }
+           
+        
 
 
 
