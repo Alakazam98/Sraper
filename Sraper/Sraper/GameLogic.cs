@@ -19,11 +19,7 @@ namespace Sraper
     class GameLogic : Game
     {
 
-        int[] index = new int[100];
-        public GameLogic()
-        {
-            
-        }  
+        
         
     }
 }

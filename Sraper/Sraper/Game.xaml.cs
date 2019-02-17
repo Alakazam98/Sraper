@@ -29,6 +29,9 @@ namespace Sraper
         int mineFound = 0;
         List<int> BlackCells = new List<int>();
 
+        /// <summary>
+        /// Generuje buttony w oknie gry oraz losuje dziesięć w których bedzie bomba
+        /// </summary>
         public Game()
           {
               InitializeComponent();
@@ -48,6 +51,7 @@ namespace Sraper
                 Board[i]=this.grid.Children.IndexOf(button);
             }
               
+            //Losuje dziesięc buttonów
             for(int i = 0;i<RandomNumber.Length;)
             {
                 int number = rnd.Next(0, 100);
@@ -65,19 +69,22 @@ namespace Sraper
 
           }
         
+        /// <summary>
+        /// Wygrana
+        /// </summary>
         public void Win()
         {
-            
-            
+  
                 MessageBox.Show("You' ve WON!" +
                     "Your Time: "+ increment.ToString());
-
-            
+  
         }
 
-       
-
-
+        /// <summary>
+        /// Otwarcie pola z bombą
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -103,6 +110,7 @@ namespace Sraper
 
 
         }
+       
        
         private void button_Right_Click(object sender, RoutedEventArgs e)
         {
@@ -139,6 +147,11 @@ namespace Sraper
 
         }
 
+
+        /// <summary>
+        /// Sprawdza otoczenie na występowanie bomb
+        /// </summary>
+        /// <param name="button"></param>
         public void CheckSurrounding(Button button)
         {
             int howManyMines = 0;
@@ -185,7 +198,10 @@ namespace Sraper
             
         }
         
-
+        /// <summary>
+        /// Otwiera wolne komórki w okolicy
+        /// </summary>
+        /// <param name="button"></param>
         public void CheckForFreeCells(Button button)
         {
             int freeCells = 0;
@@ -290,11 +306,12 @@ namespace Sraper
            
         
 
-
-
-
-
-
+       
+        /// <summary>
+        /// Powrót do menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnBackToMenu_Click(object sender, RoutedEventArgs e)
         {
             //Tworzy nowy obiekt MainWindow
@@ -321,6 +338,11 @@ namespace Sraper
 
          private int increment = 0;
 
+        /// <summary>
+        /// Timer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerTicker(object sender, EventArgs e)
         {
             increment++;
@@ -328,6 +350,11 @@ namespace Sraper
             TimerLabelContent.Content = increment.ToString();
         }
 
+        /// <summary>
+        /// Przycisk try again
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnTryAgaind_Click(object sender, RoutedEventArgs e)
         {
             //Tworzy nowy obiekt MainWindow

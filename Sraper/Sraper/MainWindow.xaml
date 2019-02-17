@@ -19,14 +19,6 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="btnHighScore" Content="HIGH SCORE" HorizontalAlignment="Center" Margin="0,412,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" ClickMode="Hover" Foreground="#FFFDFCFC" FontWeight="Bold" Click="BtnHighScore_Click">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF402906" Offset="0"/>
-                    <GradientStop Color="{DynamicResource SROLOR}" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
         <Image x:Name="MainWindowBackground" HorizontalAlignment="Left" Height="788" Margin="10,0,0,0" VerticalAlignment="Top" Width="480" Source="images/Sraper.Tlo.jpg"/>
         <Button x:Name="btnExit" Content="EXIT" HorizontalAlignment="Center" Margin="0,544,0,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" Foreground="#FFFDFCFC" FontWeight="Bold" Click="Button_Click">
             <Button.Background>
