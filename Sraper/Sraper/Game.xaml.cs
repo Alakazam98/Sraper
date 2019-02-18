@@ -167,35 +167,35 @@ namespace Sraper
             int howManyMines = 0;
             int index = grid.Children.IndexOf(button);
 
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.TopLeft) && !LeftColumn.Contains(index))
+            if (RandomNumber.Contains(index + (int)SurroundingCells.TopLeft) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((grid.Children.IndexOf(button) + (int)SurroundingCells.Top))))
+            if (RandomNumber.Contains(index + (int)SurroundingCells.Top))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.TopRight) && !RightColumn.Contains(index))
+            if (RandomNumber.Contains(index + (int)SurroundingCells.TopRight) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.Right) && !RightColumn.Contains(index))
+            if (RandomNumber.Contains(index  + (int)SurroundingCells.Right) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.BottomRight) && !RightColumn.Contains(index))
+            if (RandomNumber.Contains(index + (int)SurroundingCells.BottomRight) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.Bottom))
+            if (RandomNumber.Contains(index + (int)SurroundingCells.Bottom))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.BottomLeft) && !LeftColumn.Contains(index))
+            if (RandomNumber.Contains(index + (int)SurroundingCells.BottomLeft) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.Left) && !LeftColumn.Contains(index))
+            if (RandomNumber.Contains(index + (int)SurroundingCells.Left) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
