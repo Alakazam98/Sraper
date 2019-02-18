@@ -147,7 +147,17 @@ namespace Sraper
 
         }
 
-
+        private enum SurroundingCells
+        {
+            TopLeft = -11,
+            Top = -10,
+            TopRight = -9,
+            Left = -1,
+            Right = 1,
+            BottomLeft = 9,
+            Bottom = 10,
+            BottomRight = 11
+        }
         /// <summary>
         /// Sprawdza otoczenie na występowanie bomb
         /// </summary>
@@ -157,35 +167,35 @@ namespace Sraper
             int howManyMines = 0;
             int index = grid.Children.IndexOf(button);
 
-            if (RandomNumber.Contains(grid.Children.IndexOf(button)-11) && !LeftColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.TopLeft) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((grid.Children.IndexOf(button) - 10))))
+            if (RandomNumber.Contains(((grid.Children.IndexOf(button) + (int)SurroundingCells.Top))))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) - 9) && !RightColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.TopRight) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + 1) && !RightColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.Right) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + 11) && !RightColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.BottomRight) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((grid.Children.IndexOf(button) + 10))))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.Bottom))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) + 9) && !LeftColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.BottomLeft) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(grid.Children.IndexOf(button) - 1) && !LeftColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + (int)SurroundingCells.Left) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
@@ -198,15 +208,15 @@ namespace Sraper
             
         }
 
-        private enum SurroundingCells{
-            TopLeft = -11,
-                Top = -10,
-                TopRight = -9,
-                Left = -1,
-                Right = 1,
-                BottomLeft = 9,
-                Bottom = 10,
-                BottomRight = 11
+     
+        public bool FreeCellsCondition(int index, int x)
+        {
+            if (!RandomNumber.Contains(index + x) && Board.Contains(index + x) && !BlackCells.Contains(index + x))
+            {
+                return true;
+            }
+            else
+                return false;
         }
         /// <summary>
         /// Otwiera wolne komórki w okolicy
@@ -214,103 +224,100 @@ namespace Sraper
         /// <param name="button"></param>
         public void CheckForFreeCells(Button button)
         {
-            int freeCells = 0;
+            
             int index = grid.Children.IndexOf(button);
-            if (!RandomNumber.Contains(index - 11) && Board.Contains(index -11 ) && !LeftColumn.Contains(index) && !BlackCells.Contains(index - 11))
+            if ( FreeCellsCondition(index, (int)SurroundingCells.TopLeft) && !LeftColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
                 button.Background = Brushes.White;
 
-                grid.Children.RemoveAt(index - 11);
-                    grid.Children.Insert(index - 11, button1);
+                grid.Children.RemoveAt(index + (int)SurroundingCells.TopLeft);
+                    grid.Children.Insert(index + (int)SurroundingCells.TopLeft, button1);
                 CheckSurrounding(button1);
 
 
             }
-            if (!RandomNumber.Contains(index - 10) && Board.Contains(index - 10) && !BlackCells.Contains(index - 10))
+            if (FreeCellsCondition(index, (int)SurroundingCells.Top))
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
 
-                grid.Children.RemoveAt(index - 10);
+                grid.Children.RemoveAt(index + (int)SurroundingCells.Top);
 
-                grid.Children.Insert(index - 10, button1);
+                grid.Children.Insert(index + (int)SurroundingCells.Top, button1);
                 CheckSurrounding(button1);
 
 
             }
-            if (!RandomNumber.Contains(index - 9)&&Board.Contains(index - 9) && !RightColumn.Contains(index) && !BlackCells.Contains(index - 9))
+            if (FreeCellsCondition(index, (int)SurroundingCells.TopRight) && !RightColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
 
-                grid.Children.RemoveAt(index - 9);
+                grid.Children.RemoveAt(index + (int)SurroundingCells.TopRight);
 
-                grid.Children.Insert(index - 9, button1);
+                grid.Children.Insert(index + (int)SurroundingCells.TopRight, button1);
                 CheckSurrounding(button1);
 
 
             }
-            if (!RandomNumber.Contains(index + 1)&& Board.Contains(index + 1) &&  !RightColumn.Contains(index) && !BlackCells.Contains(index + 1))
+            if (FreeCellsCondition(index, (int)SurroundingCells.Right) && !RightColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index + 1);
+                grid.Children.RemoveAt(index + (int)SurroundingCells.Right);
 
-                grid.Children.Insert(index + 1, button1);
+                grid.Children.Insert(index + (int)SurroundingCells.Right, button1);
                 CheckSurrounding(button1);
 
 
             }
-            if (!RandomNumber.Contains(index + 11)&&Board.Contains(index + 11) && !RightColumn.Contains(index) && !BlackCells.Contains(index + 11))
+            if (FreeCellsCondition(index, (int)SurroundingCells.BottomRight) && !RightColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index + 11);
+                grid.Children.RemoveAt(index + (int)SurroundingCells.BottomRight);
 
-                grid.Children.Insert(index + 11, button1);
+                grid.Children.Insert(index + (int)SurroundingCells.BottomRight, button1);
                 CheckSurrounding(button1);
 
 
             }
-            if (!RandomNumber.Contains(index + 10)&& Board.Contains(index + 10) && !BlackCells.Contains(index + 10))
+            if (FreeCellsCondition(index, (int)SurroundingCells.Bottom))
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index + 10);
+                grid.Children.RemoveAt(index + (int)SurroundingCells.Bottom);
 
-                grid.Children.Insert(index + 10, button1);
+                grid.Children.Insert(index + (int)SurroundingCells.Bottom, button1);
                 CheckSurrounding(button1);
 
 
             }
-            if (!RandomNumber.Contains( index + 9) && Board.Contains(index + 9) && !LeftColumn.Contains(index ) && !BlackCells.Contains(index + 9))
+            if (FreeCellsCondition(index, (int)SurroundingCells.BottomLeft) && !LeftColumn.Contains(index ) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index  +9);
+                grid.Children.RemoveAt(index  + (int)SurroundingCells.BottomLeft);
 
-                grid.Children.Insert(index +9, button1);
+                grid.Children.Insert(index + (int)SurroundingCells.BottomLeft, button1);
                 CheckSurrounding(button1);
 
 
             }
-            if (!RandomNumber.Contains(index - 1) && Board.Contains(index - 1) && !LeftColumn.Contains(index) && !BlackCells.Contains(index - 1))
+            if (FreeCellsCondition(index, (int)SurroundingCells.Left) && !LeftColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index - 1);
+                grid.Children.RemoveAt(index + (int)SurroundingCells.Left);
 
-                grid.Children.Insert(index - 1, button1);
+                grid.Children.Insert(index + (int)SurroundingCells.Left, button1);
                 CheckSurrounding(button1);
 
 
             }
-            if (freeCells == 0)
-            {
-                
-            }
+            
 
         }
            
