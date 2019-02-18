@@ -22,12 +22,12 @@ namespace Sraper
     {
 
 
-        int[] Board = new int[100];
-        int[] RandomNumber = new int[10];
-        int[] LeftColumn = new int[10] { 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 };
-        int[] RightColumn = new int[10] { 9, 19, 29, 39, 49, 59, 69, 79, 89, 99 };
-        int mineFound = 0;
-        List<int> BlackCells = new List<int>();
+        private int[] Board { get; set; } = new int[100];
+        private int[] RandomNumber { get; set; } = new int[10];
+        private int[] LeftColumn { get;  } = new int[10] { 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+        private int[] RightColumn { get;  } = new int[10] { 9, 19, 29, 39, 49, 59, 69, 79, 89, 99 };
+        private int MineFound { get; set; } = 0;
+        private List<int> BlackCells { get; set; } = new List<int>();
 
         /// <summary>
         /// Generuje buttony w oknie gry oraz losuje dziesięć w których bedzie bomba
@@ -47,8 +47,8 @@ namespace Sraper
                   };
                   button.Click += new RoutedEventHandler(button_Click);
                   button.MouseRightButtonDown += new MouseButtonEventHandler(button_Right_Click);
-                  this.grid.Children.Add(button);
-                Board[i]=this.grid.Children.IndexOf(button);
+                  grid.Children.Add(button);
+                Board[i] = grid.Children.IndexOf(button);
             }
               
             //Losuje dziesięc buttonów
@@ -90,7 +90,7 @@ namespace Sraper
 
             
             Button button = sender as Button;
-            if (this.RandomNumber.Contains(this.grid.Children.IndexOf(button)))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button)))
             {
                 Image image = new Image();
                 image.Source = new BitmapImage(new Uri("images/Sraper.Tlo.jpg", UriKind.RelativeOrAbsolute));
@@ -135,12 +135,12 @@ namespace Sraper
             }
             if (RandomNumber.Contains(grid.Children.IndexOf(button)) && button.Background == Brushes.Black)
             {
-                mineFound++;
+                MineFound++;
             }
             else if (RandomNumber.Contains(grid.Children.IndexOf(button)) && button.Background == Brushes.LightGray)
-                mineFound--;
+                MineFound--;
 
-            if (mineFound == 10)
+            if (MineFound == 10)
             {
                 Win();
             }
@@ -157,35 +157,35 @@ namespace Sraper
             int howManyMines = 0;
             int index = grid.Children.IndexOf(button);
 
-            if (RandomNumber.Contains(this.grid.Children.IndexOf(button)-11) && !LeftColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button)-11) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) - 10))))
+            if (RandomNumber.Contains(((grid.Children.IndexOf(button) - 10))))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) - 9) && !RightColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) - 9) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) + 1) && !RightColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + 1) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) + 11) && !RightColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + 11) && !RightColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(((this.grid.Children.IndexOf(button) + 10))))
+            if (RandomNumber.Contains(((grid.Children.IndexOf(button) + 10))))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) + 9) && !LeftColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) + 9) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
-            if (RandomNumber.Contains(this.grid.Children.IndexOf(button) - 1) && !LeftColumn.Contains(index))
+            if (RandomNumber.Contains(grid.Children.IndexOf(button) - 1) && !LeftColumn.Contains(index))
             {
                 howManyMines++;
             }
@@ -197,7 +197,17 @@ namespace Sraper
             button.Content = howManyMines;
             
         }
-        
+
+        private enum SurroundingCells{
+            TopLeft = -11,
+                Top = -10,
+                TopRight = -9,
+                Left = -1,
+                Right = 1,
+                BottomLeft = 9,
+                Bottom = 10,
+                BottomRight = 11
+        }
         /// <summary>
         /// Otwiera wolne komórki w okolicy
         /// </summary>
