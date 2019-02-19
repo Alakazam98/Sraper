@@ -33,7 +33,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.MenuTextColorKey}}"/>
             </Label.Foreground>
         </Label>
-        <Button x:Name="btnInstruction" Content="INSTRUKCJA" HorizontalAlignment="Center" Margin="570,416,570,0" VerticalAlignment="Top" Width="308" Height="80" FontSize="48" FontWeight="Bold" Foreground="White" Click="BtnInstruction">
+        <Button x:Name="btnInstruction" Content="INSTRUKCJA" HorizontalAlignment="Center" Margin="571,416,571.333,0" VerticalAlignment="Top" Width="307" Height="80" FontSize="48" FontWeight="Bold" Foreground="White" Click="BtnInstruction">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
