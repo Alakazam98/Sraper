@@ -6,11 +6,25 @@
         xmlns:local="clr-namespace:Sraper"
         mc:Ignorable="d"
         Title="Game" Height="507.722" Width="874.43" Loaded="Window_Loaded">
-    
+
     <Grid>
         <Border  HorizontalAlignment="Left" Height="410" Margin="410,38,0,0" VerticalAlignment="Top" Width="410"/>
-        <Button x:Name="btnTryAgaind" Content="TRY AGAIN" HorizontalAlignment="Left" Margin="99,182,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold" Click="BtnTryAgaind_Click"/>
-        <Button x:Name="btnBackToMenu" Content="MAIN MENU" HorizontalAlignment="Left" Margin="99,292,0,0" VerticalAlignment="Top" Width="184" Height="45" FontSize="24" FontWeight="Bold" Click="BtnBackToMenu_Click"/>
+        <Button x:Name="btnTryAgaind" Content="SPRÓBUJ PONOWNIE" HorizontalAlignment="Left" Foreground="White" Margin="27,182,0,0" VerticalAlignment="Top" Width="256" Height="45" FontSize="24" FontWeight="Bold" Click="BtnTryAgaind_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="{DynamicResource Srolor}" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnBackToMenu" Content="MENU" HorizontalAlignment="Left" Margin="27,292,0,0" Foreground="White" VerticalAlignment="Top" Width="256" Height="45" FontSize="24" FontWeight="Bold" Click="BtnBackToMenu_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FFB97610" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
         <Grid x:Name="ButtonsGrid" Margin="410,38,48,0" Height="410" Width="410" VerticalAlignment="Center">
 
             <UniformGrid x:Name="grid" Rows="10" Columns="10" >

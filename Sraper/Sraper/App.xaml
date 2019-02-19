@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:Sraper"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Color x:Key="Srolor">#FFB97610</Color>
+
     </Application.Resources>
 </Application>

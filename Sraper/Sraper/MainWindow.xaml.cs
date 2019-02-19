@@ -42,14 +42,19 @@ namespace Sraper
             this.Close();
         }
 
-        private void BtnHighScore_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Maximized;
+
+        }
+
+        private void BtnInstruction(object sender, RoutedEventArgs e)
+        {
+            Instruction instruction = new Instruction();
+
+            instruction.Show();
+
+            this.Close();
 
         }
     }
