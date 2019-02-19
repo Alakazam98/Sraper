@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using GameLogic;
 namespace Sraper
 {
     /// <summary>
@@ -21,13 +22,15 @@ namespace Sraper
     public partial class Game : Window
     {
 
-
+        GameLog gameLogic = new GameLog();
         private int[] Board { get; set; } = new int[100];
         private int[] RandomNumber { get; set; } = new int[10];
         private int[] LeftColumn { get;  } = new int[10] { 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 };
         private int[] RightColumn { get;  } = new int[10] { 9, 19, 29, 39, 49, 59, 69, 79, 89, 99 };
         private int MineFound { get; set; } = 0;
         private List<int> BlackCells { get; set; } = new List<int>();
+        private int Increment { get; set; } = 0;
+
 
         /// <summary>
         /// Generuje buttony w oknie gry oraz losuje dziesięć w których bedzie bomba
@@ -72,11 +75,11 @@ namespace Sraper
         /// <summary>
         /// Wygrana
         /// </summary>
-        public void Win()
+        private void Win()
         {
   
                 MessageBox.Show("You' ve WON!" +
-                    "Your Time: "+ increment.ToString());
+                    "Your Time: "+ Increment.ToString());
   
         }
 
@@ -88,8 +91,9 @@ namespace Sraper
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
-            
             Button button = sender as Button;
+            int index = grid.Children.IndexOf(button);
+
             if (RandomNumber.Contains(grid.Children.IndexOf(button)))
             {
                 Image image = new Image();
@@ -102,8 +106,9 @@ namespace Sraper
             }
             else
             {
-                CheckSurrounding(button);
-                CheckForFreeCells(button);
+
+                button.Content = gameLogic.CheckSurrounding(index, RandomNumber,LeftColumn, RightColumn);
+                ShowFreeCells(button);
             }
 
             button.Background = Brushes.White;
@@ -158,75 +163,16 @@ namespace Sraper
             Bottom = 10,
             BottomRight = 11
         }
-        /// <summary>
-        /// Sprawdza otoczenie na występowanie bomb
-        /// </summary>
-        /// <param name="button"></param>
-        public void CheckSurrounding(Button button)
-        {
-            int howManyMines = 0;
-            int index = grid.Children.IndexOf(button);
-
-            if (RandomNumber.Contains(index + (int)SurroundingCells.TopLeft) && !LeftColumn.Contains(index))
-            {
-                howManyMines++;
-            }
-            if (RandomNumber.Contains(index + (int)SurroundingCells.Top))
-            {
-                howManyMines++;
-            }
-            if (RandomNumber.Contains(index + (int)SurroundingCells.TopRight) && !RightColumn.Contains(index))
-            {
-                howManyMines++;
-            }
-            if (RandomNumber.Contains(index  + (int)SurroundingCells.Right) && !RightColumn.Contains(index))
-            {
-                howManyMines++;
-            }
-            if (RandomNumber.Contains(index + (int)SurroundingCells.BottomRight) && !RightColumn.Contains(index))
-            {
-                howManyMines++;
-            }
-            if (RandomNumber.Contains(index + (int)SurroundingCells.Bottom))
-            {
-                howManyMines++;
-            }
-            if (RandomNumber.Contains(index + (int)SurroundingCells.BottomLeft) && !LeftColumn.Contains(index))
-            {
-                howManyMines++;
-            }
-            if (RandomNumber.Contains(index + (int)SurroundingCells.Left) && !LeftColumn.Contains(index))
-            {
-                howManyMines++;
-            }
-            if(howManyMines==0)
-            {
-                button.Content = null;
-            }
-            else
-            button.Content = howManyMines;
-            
-        }
-
-     
-        public bool FreeCellsCondition(int index, int x)
-        {
-            if (!RandomNumber.Contains(index + x) && Board.Contains(index + x) && !BlackCells.Contains(index + x))
-            {
-                return true;
-            }
-            else
-                return false;
-        }
+        
         /// <summary>
         /// Otwiera wolne komórki w okolicy
         /// </summary>
         /// <param name="button"></param>
-        public void CheckForFreeCells(Button button)
+        private void ShowFreeCells(Button button)
         {
             
             int index = grid.Children.IndexOf(button);
-            if ( FreeCellsCondition(index, (int)SurroundingCells.TopLeft) && !LeftColumn.Contains(index) )
+            if ( gameLogic.FreeCellsCondition(index, (int)SurroundingCells.TopLeft, RandomNumber, Board, BlackCells ) && !LeftColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -234,11 +180,11 @@ namespace Sraper
 
                 grid.Children.RemoveAt(index + (int)SurroundingCells.TopLeft);
                     grid.Children.Insert(index + (int)SurroundingCells.TopLeft, button1);
-                CheckSurrounding(button1);
+                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
 
 
             }
-            if (FreeCellsCondition(index, (int)SurroundingCells.Top))
+            if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.Top,RandomNumber, Board, BlackCells))
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -246,11 +192,11 @@ namespace Sraper
                 grid.Children.RemoveAt(index + (int)SurroundingCells.Top);
 
                 grid.Children.Insert(index + (int)SurroundingCells.Top, button1);
-                CheckSurrounding(button1);
+                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
 
 
             }
-            if (FreeCellsCondition(index, (int)SurroundingCells.TopRight) && !RightColumn.Contains(index) )
+            if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.TopRight, RandomNumber, Board, BlackCells) && !RightColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
@@ -258,66 +204,71 @@ namespace Sraper
                 grid.Children.RemoveAt(index + (int)SurroundingCells.TopRight);
 
                 grid.Children.Insert(index + (int)SurroundingCells.TopRight, button1);
-                CheckSurrounding(button1);
+                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
 
 
             }
-            if (FreeCellsCondition(index, (int)SurroundingCells.Right) && !RightColumn.Contains(index) )
+            if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.Right, RandomNumber, Board, BlackCells) && !RightColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
                 grid.Children.RemoveAt(index + (int)SurroundingCells.Right);
 
                 grid.Children.Insert(index + (int)SurroundingCells.Right, button1);
-                CheckSurrounding(button1);
+                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
+
 
 
             }
-            if (FreeCellsCondition(index, (int)SurroundingCells.BottomRight) && !RightColumn.Contains(index) )
+            if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.BottomRight, RandomNumber, Board, BlackCells) && !RightColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
                 grid.Children.RemoveAt(index + (int)SurroundingCells.BottomRight);
 
                 grid.Children.Insert(index + (int)SurroundingCells.BottomRight, button1);
-                CheckSurrounding(button1);
+                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
+
 
 
             }
-            if (FreeCellsCondition(index, (int)SurroundingCells.Bottom))
+            if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.Bottom, RandomNumber, Board, BlackCells))
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
                 grid.Children.RemoveAt(index + (int)SurroundingCells.Bottom);
 
                 grid.Children.Insert(index + (int)SurroundingCells.Bottom, button1);
-                CheckSurrounding(button1);
+                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
+
 
 
             }
-            if (FreeCellsCondition(index, (int)SurroundingCells.BottomLeft) && !LeftColumn.Contains(index ) )
+            if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.BottomLeft,RandomNumber, Board, BlackCells) && !LeftColumn.Contains(index ) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
                 grid.Children.RemoveAt(index  + (int)SurroundingCells.BottomLeft);
 
                 grid.Children.Insert(index + (int)SurroundingCells.BottomLeft, button1);
-                CheckSurrounding(button1);
+                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
+
 
 
             }
-            if (FreeCellsCondition(index, (int)SurroundingCells.Left) && !LeftColumn.Contains(index) )
+            if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.Left, RandomNumber, Board, BlackCells) && !LeftColumn.Contains(index) )
             {
                 Button button1 = new Button();
                 button1.Background = Brushes.White;
                 grid.Children.RemoveAt(index + (int)SurroundingCells.Left);
 
                 grid.Children.Insert(index + (int)SurroundingCells.Left, button1);
-                CheckSurrounding(button1);
+                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
+
 
 
             }
-            
+
 
         }
            
@@ -353,8 +304,6 @@ namespace Sraper
             
         }
 
-         private int increment = 0;
-
         /// <summary>
         /// Timer
         /// </summary>
@@ -362,9 +311,9 @@ namespace Sraper
         /// <param name="e"></param>
         private void timerTicker(object sender, EventArgs e)
         {
-            increment++;
+            Increment++;
 
-            TimerLabelContent.Content = increment.ToString();
+            TimerLabelContent.Content = Increment.ToString();
         }
 
         /// <summary>
