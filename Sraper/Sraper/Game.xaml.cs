@@ -30,7 +30,7 @@ namespace Sraper
         private int MineFound { get; set; } = 0;
         private List<int> BlackCells { get; set; } = new List<int>();
         private int Increment { get; set; } = 0;
-
+        private bool GameLost { get; set; }
 
         /// <summary>
         /// Generuje buttony w oknie gry oraz losuje dziesięć w których bedzie bomba
@@ -74,6 +74,7 @@ namespace Sraper
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             WindowState = WindowState.Maximized;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -88,6 +89,12 @@ namespace Sraper
         /// <param name="e"></param>
         private void timerTicker(object sender, EventArgs e)
         {
+
+             if (MineFound == 10 && BlackCells.Count() == 10 || GameLost)
+                {
+                Increment = Increment;
+                }
+             else
             Increment++;
 
             TimerLabelContent.Content = Increment.ToString();
@@ -99,8 +106,8 @@ namespace Sraper
         /// </summary>
         private void Win()
         {
-           
-           
+
+            
             for (int i = 0; i < RandomNumber.Count(); i++)
             {
                 Button poop = new Button();
@@ -108,6 +115,7 @@ namespace Sraper
                 image.Source = new BitmapImage(new Uri("images/Sraper.Tlo.jpg", UriKind.RelativeOrAbsolute));
                 poop.Background = Brushes.White;
                 poop.Content = image;
+                grid.Children.RemoveAt(RandomNumber[i]);
                 grid.Children.Insert(RandomNumber[i], poop);
             }
             MessageBox.Show("Wygrałeś!!! Twoje buty są czyste!" +
@@ -135,6 +143,8 @@ namespace Sraper
 
                 button.Background = Brushes.White;
                 button.Content = image;
+                GameLost = true;
+
                 MessageBox.Show("Wdepłeś w mine!!!");
                 grid.IsEnabled = false;
             }
