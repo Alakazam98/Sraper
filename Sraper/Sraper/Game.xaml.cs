@@ -78,8 +78,8 @@ namespace Sraper
         private void Win()
         {
   
-                MessageBox.Show("You' ve WON!" +
-                    "Your Time: "+ Increment.ToString());
+                MessageBox.Show("Wygrałeś!!! Twoje buty są czyste!" +
+                    "Twój czas: "+ Increment.ToString());
   
         }
 
@@ -101,7 +101,7 @@ namespace Sraper
 
                 button.Background = Brushes.White;
                 button.Content = image;
-                MessageBox.Show("You stepped in a poop!");
+                MessageBox.Show("Wdepłeś w mine!!!");
                 grid.IsEnabled = false;
             }
             else
@@ -164,108 +164,68 @@ namespace Sraper
             BottomRight = 11
         }
         
+        private void ShowCell(int cellPosition, Button button)
+        {
+            int index = grid.Children.IndexOf(button);
+            Button button1 = new Button();
+            button1.Background = Brushes.White;
+            button.Background = Brushes.White;
+
+            grid.Children.RemoveAt(index + cellPosition);
+            grid.Children.Insert(index + cellPosition, button1);
+            button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
+
+        }
         /// <summary>
         /// Otwiera wolne komórki w okolicy
         /// </summary>
         /// <param name="button"></param>
         private void ShowFreeCells(Button button)
         {
-            
             int index = grid.Children.IndexOf(button);
+
             if ( gameLogic.FreeCellsCondition(index, (int)SurroundingCells.TopLeft, RandomNumber, Board, BlackCells ) && !LeftColumn.Contains(index) )
             {
-                Button button1 = new Button();
-                button1.Background = Brushes.White;
-                button.Background = Brushes.White;
-
-                grid.Children.RemoveAt(index + (int)SurroundingCells.TopLeft);
-                    grid.Children.Insert(index + (int)SurroundingCells.TopLeft, button1);
-                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
-
+                ShowCell((int)SurroundingCells.TopLeft, button);
 
             }
             if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.Top,RandomNumber, Board, BlackCells))
             {
-                Button button1 = new Button();
-                button1.Background = Brushes.White;
-
-                grid.Children.RemoveAt(index + (int)SurroundingCells.Top);
-
-                grid.Children.Insert(index + (int)SurroundingCells.Top, button1);
-                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
-
+                ShowCell((int)SurroundingCells.Top, button);
 
             }
             if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.TopRight, RandomNumber, Board, BlackCells) && !RightColumn.Contains(index) )
             {
-                Button button1 = new Button();
-                button1.Background = Brushes.White;
-
-                grid.Children.RemoveAt(index + (int)SurroundingCells.TopRight);
-
-                grid.Children.Insert(index + (int)SurroundingCells.TopRight, button1);
-                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
-
+                ShowCell((int)SurroundingCells.TopRight, button);
 
             }
             if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.Right, RandomNumber, Board, BlackCells) && !RightColumn.Contains(index) )
             {
-                Button button1 = new Button();
-                button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index + (int)SurroundingCells.Right);
-
-                grid.Children.Insert(index + (int)SurroundingCells.Right, button1);
-                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
-
-
+                ShowCell((int)SurroundingCells.Right, button);
 
             }
             if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.BottomRight, RandomNumber, Board, BlackCells) && !RightColumn.Contains(index) )
             {
-                Button button1 = new Button();
-                button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index + (int)SurroundingCells.BottomRight);
 
-                grid.Children.Insert(index + (int)SurroundingCells.BottomRight, button1);
-                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
-
-
+                ShowCell((int)SurroundingCells.BottomRight, button);
 
             }
             if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.Bottom, RandomNumber, Board, BlackCells))
             {
-                Button button1 = new Button();
-                button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index + (int)SurroundingCells.Bottom);
 
-                grid.Children.Insert(index + (int)SurroundingCells.Bottom, button1);
-                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
-
-
+                ShowCell((int)SurroundingCells.Bottom, button);
 
             }
             if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.BottomLeft,RandomNumber, Board, BlackCells) && !LeftColumn.Contains(index ) )
             {
-                Button button1 = new Button();
-                button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index  + (int)SurroundingCells.BottomLeft);
 
-                grid.Children.Insert(index + (int)SurroundingCells.BottomLeft, button1);
-                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
-
-
+                ShowCell((int)SurroundingCells.BottomLeft, button);
 
             }
             if (gameLogic.FreeCellsCondition(index, (int)SurroundingCells.Left, RandomNumber, Board, BlackCells) && !LeftColumn.Contains(index) )
             {
-                Button button1 = new Button();
-                button1.Background = Brushes.White;
-                grid.Children.RemoveAt(index + (int)SurroundingCells.Left);
 
-                grid.Children.Insert(index + (int)SurroundingCells.Left, button1);
-                button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
-
-
+                ShowCell((int)SurroundingCells.Left, button);
 
             }
 
