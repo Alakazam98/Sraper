@@ -130,7 +130,7 @@ namespace Sraper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_Click(object sender, RoutedEventArgs e)
+        private  void button_Click(object sender, RoutedEventArgs e)
         {
 
             Button button = sender as Button;
