@@ -71,16 +71,50 @@ namespace Sraper
             
 
           }
-        
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timerTicker;
+            timer.Start();
+            
+        }
+        /// <summary>
+        /// Timer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timerTicker(object sender, EventArgs e)
+        {
+            Increment++;
+
+            TimerLabelContent.Content = Increment.ToString();
+        }
+
+
         /// <summary>
         /// Wygrana
         /// </summary>
         private void Win()
         {
-  
-                MessageBox.Show("Wygrałeś!!! Twoje buty są czyste!" +
-                    "Twój czas: "+ Increment.ToString());
-  
+           
+           
+            for (int i = 0; i < RandomNumber.Count(); i++)
+            {
+                Button poop = new Button();
+                Image image = new Image();
+                image.Source = new BitmapImage(new Uri("images/Sraper.Tlo.jpg", UriKind.RelativeOrAbsolute));
+                poop.Background = Brushes.White;
+                poop.Content = image;
+                grid.Children.Insert(RandomNumber[i], poop);
+            }
+            MessageBox.Show("Wygrałeś!!! Twoje buty są czyste!" +
+                   "Twój czas: " + Increment.ToString());
+
+            grid.IsEnabled = false;
+
         }
 
         /// <summary>
@@ -106,8 +140,12 @@ namespace Sraper
             }
             else
             {
-
+                if (gameLogic.CheckSurrounding(index, RandomNumber, LeftColumn, RightColumn) == 0)
+                    button.Content = null;
+                else
                 button.Content = gameLogic.CheckSurrounding(index, RandomNumber,LeftColumn, RightColumn);
+
+
                 ShowFreeCells(button);
             }
 
@@ -145,7 +183,7 @@ namespace Sraper
             else if (RandomNumber.Contains(grid.Children.IndexOf(button)) && button.Background == Brushes.LightGray)
                 MineFound--;
 
-            if (MineFound == 10)
+            if (MineFound == 10 && BlackCells.Count()==10)
             {
                 Win();
             }
@@ -173,6 +211,9 @@ namespace Sraper
 
             grid.Children.RemoveAt(index + cellPosition);
             grid.Children.Insert(index + cellPosition, button1);
+            if (gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn) == 0)
+                button1.Content = null;
+            else
             button1.Content = gameLogic.CheckSurrounding(grid.Children.IndexOf(button1), RandomNumber, LeftColumn, RightColumn);
 
         }
@@ -254,28 +295,9 @@ namespace Sraper
 
        
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Maximized;
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += timerTicker;
-            timer.Start();
-            
-        }
+     
 
-        /// <summary>
-        /// Timer
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timerTicker(object sender, EventArgs e)
-        {
-            Increment++;
-
-            TimerLabelContent.Content = Increment.ToString();
-        }
-
+      
         /// <summary>
         /// Przycisk try again
         /// </summary>
