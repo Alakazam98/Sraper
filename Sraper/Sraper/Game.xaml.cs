@@ -33,7 +33,7 @@ namespace Sraper
         private bool GameLost { get; set; }
 
         /// <summary>
-        /// Generuje buttony w oknie gry oraz losuje dziesięć w których bedzie bomba
+        /// Generuje buttony w oknie gry 
         /// </summary>
         public Game()
           {
@@ -54,7 +54,7 @@ namespace Sraper
                 Board[i] = grid.Children.IndexOf(button);
             }
               
-            //Losuje dziesięc buttonów
+            //Losuje dziesięc buttonów, w których będzie bomba
             for(int i = 0;i<RandomNumber.Length;)
             {
                 int number = rnd.Next(0, 100);
@@ -117,12 +117,28 @@ namespace Sraper
                 poop.Content = image;
                 grid.Children.RemoveAt(RandomNumber[i]);
                 grid.Children.Insert(RandomNumber[i], poop);
+                grid.IsEnabled = false;
             }
             MessageBox.Show("Wygrałeś!!! Twoje buty są czyste!" +
                    "Twój czas: " + Increment.ToString());
 
-            grid.IsEnabled = false;
 
+        }
+        private void Lost()
+        {
+            for (int i = 0; i < RandomNumber.Count(); i++)
+            {
+                Button poop = new Button();
+                Image image = new Image();
+                image.Source = new BitmapImage(new Uri("images/Sraper.Tlo.jpg", UriKind.RelativeOrAbsolute));
+                poop.Background = Brushes.White;
+                poop.Content = image;
+                grid.Children.RemoveAt(RandomNumber[i]);
+                grid.Children.Insert(RandomNumber[i], poop);
+                grid.IsEnabled = false;
+            }
+            MessageBox.Show("Wdepłeś w mine!!!");
+                   
         }
 
         /// <summary>
@@ -144,9 +160,8 @@ namespace Sraper
                 button.Background = Brushes.White;
                 button.Content = image;
                 GameLost = true;
-
-                MessageBox.Show("Wdepłeś w mine!!!");
-                grid.IsEnabled = false;
+                Lost();
+                
             }
             else
             {
