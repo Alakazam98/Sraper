@@ -72,6 +72,11 @@ namespace Sraper
 
           }
 
+        /// <summary>
+        /// Maksymalizacja okna, start timera
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -124,6 +129,10 @@ namespace Sraper
 
 
         }
+
+        /// <summary>
+        /// Przegrana
+        /// </summary>
         private void Lost()
         {
             for (int i = 0; i < RandomNumber.Count(); i++)
@@ -137,7 +146,7 @@ namespace Sraper
                 grid.Children.Insert(RandomNumber[i], poop);
                 grid.IsEnabled = false;
             }
-            MessageBox.Show("Wdepłeś w mine!!!");
+            MessageBox.Show("Wdepnąłeś w bombę!!!");
                    
         }
 
@@ -179,7 +188,11 @@ namespace Sraper
 
         }
        
-       
+       /// <summary>
+       /// Prawy przycisk myszy zaznacza bomby
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         private void button_Right_Click(object sender, RoutedEventArgs e)
         {
             
@@ -215,6 +228,10 @@ namespace Sraper
 
         }
 
+
+        /// <summary>
+        /// Pola otaczające wybrane pole
+        /// </summary>
         private enum SurroundingCells
         {
             TopLeft = -11,
@@ -227,6 +244,11 @@ namespace Sraper
             BottomRight = 11
         }
         
+        /// <summary>
+        /// Pokazuje zawartość komórki 
+        /// </summary>
+        /// <param name="cellPosition"></param>
+        /// <param name="button"></param>
         private void ShowCell(int cellPosition, Button button)
         {
             int index = grid.Children.IndexOf(button);

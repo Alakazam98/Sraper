@@ -19,6 +19,9 @@ namespace Sraper
     /// </summary>
     public partial class Instruction : Window
     {
+        /// <summary>
+        /// Otwieranie okna instrukcji
+        /// </summary>
         public Instruction()
         {
             InitializeComponent();
@@ -42,6 +45,11 @@ namespace Sraper
             this.Close();
         }
 
+        /// <summary>
+        /// Zamyka aplikacje
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

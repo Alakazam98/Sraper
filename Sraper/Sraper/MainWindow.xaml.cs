@@ -20,6 +20,9 @@ namespace Sraper
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Otwieranie głównego okna
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
